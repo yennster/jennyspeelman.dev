@@ -13,7 +13,7 @@ export type ClaudeApp = {
 export const apps: ClaudeApp[] = [
   {
     slug: "synthetic",
-    name: "Synthetic",
+    name: "Synthetic Data Studio",
     description:
       "Browser-based 3D tool for generating synthetic training data via hand-tracked gestures or a virtual camera, with direct Edge Impulse upload.",
     url: "https://synthetic.jennyspeelman.dev",
