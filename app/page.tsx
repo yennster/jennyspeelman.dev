@@ -116,11 +116,18 @@ export default function Home() {
                       >
                         <span aria-hidden>{app.icon}</span>
                       </div>
-                      <span
-                        className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${statusStyle[app.status]}`}
-                      >
-                        {statusLabel[app.status]}
-                      </span>
+                      <div className="flex flex-wrap justify-end gap-1.5">
+                        <span
+                          className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${statusStyle[app.status]}`}
+                        >
+                          {statusLabel[app.status]}
+                        </span>
+                        {app.inDevelopment && (
+                          <span className="rounded-full px-2.5 py-1 text-[11px] font-medium bg-pink-500/10 text-pink-300 ring-1 ring-pink-400/30">
+                            In development
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     <h3 className="mt-5 text-lg font-semibold tracking-tight">

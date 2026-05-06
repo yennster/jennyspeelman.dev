@@ -6,6 +6,7 @@ export type ClaudeApp = {
   description: string;
   url: string;
   status: AppStatus;
+  inDevelopment?: boolean;
   icon: string;
   accent: string;
 };
@@ -18,6 +19,7 @@ export const apps: ClaudeApp[] = [
       "Browser-based 3D tool for generating synthetic training data via hand-tracked gestures or a virtual camera, with direct Edge Impulse upload.",
     url: "https://synthetic.jennyspeelman.dev",
     status: "live",
+    inDevelopment: true,
     icon: "🧬",
     accent: "from-fuchsia-500 to-purple-600",
   },
