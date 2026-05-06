@@ -12,13 +12,13 @@ export type ClaudeApp = {
 
 export const apps: ClaudeApp[] = [
   {
-    slug: "example",
-    name: "Example App",
+    slug: "synthetic",
+    name: "Synthetic",
     description:
-      "Replace me — drop new entries into lib/apps.ts as you ship subdomains.",
-    url: "https://example.jennyspeelman.dev",
-    status: "soon",
-    icon: "✨",
+      "Browser-based 3D tool for generating synthetic training data via hand-tracked gestures or a virtual camera, with direct Edge Impulse upload.",
+    url: "https://synthetic.jennyspeelman.dev",
+    status: "live",
+    icon: "🧬",
     accent: "from-fuchsia-500 to-purple-600",
   },
 ];

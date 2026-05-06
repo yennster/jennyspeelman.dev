@@ -31,9 +31,9 @@ export default function Home() {
             *.jennyspeelman.dev
           </div>
           <h1 className="mt-6 text-balance text-5xl font-semibold tracking-tight sm:text-6xl">
-            Tiny apps,{" "}
+            Jenny&apos;s apps,{" "}
             <span className="bg-gradient-to-r from-fuchsia-400 via-pink-400 to-cyan-300 bg-clip-text text-transparent">
-              built with Claude.
+              built with AI.
             </span>
           </h1>
           <p className="mt-5 max-w-2xl text-pretty text-lg text-white/65 sm:text-xl">
@@ -58,6 +58,14 @@ export default function Home() {
               className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-medium text-white/80 backdrop-blur transition hover:bg-white/10"
             >
               GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jennyspeelman"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-medium text-white/80 backdrop-blur transition hover:bg-white/10"
+            >
+              LinkedIn
             </a>
           </div>
         </header>
@@ -151,8 +159,9 @@ export default function Home() {
               rel="noopener noreferrer"
               className="text-white/70 underline-offset-4 transition hover:text-white hover:underline"
             >
-              Jenny Plunkett
-            </a>
+              Jenny Speelman
+            </a>{" "}
+            with AI
           </p>
           <p className="font-mono text-xs">© {new Date().getFullYear()}</p>
         </footer>
