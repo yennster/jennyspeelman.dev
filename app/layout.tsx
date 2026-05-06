@@ -12,16 +12,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const browserTitle = "JennySpeelman.dev";
+const siteTitle = "Jenny's apps, built with AI.";
+const siteDescription =
+  "A playground for the things I prompt into existence.";
+
 export const metadata: Metadata = {
-  title: "jennyspeelman.dev — Claude-built apps",
-  description:
-    "A playground of small apps Jenny built with Claude, hosted on *.jennyspeelman.dev.",
+  metadataBase: new URL("https://jennyspeelman.dev"),
+  title: browserTitle,
+  description: siteDescription,
   openGraph: {
-    title: "jennyspeelman.dev",
-    description: "A playground of small apps Jenny built with Claude.",
+    title: siteTitle,
+    description: siteDescription,
     url: "https://jennyspeelman.dev",
     siteName: "jennyspeelman.dev",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
   },
 };
 
