@@ -59,7 +59,7 @@ export default function Home() {
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/jennyspeelman"
+              href="https://www.linkedin.com/in/jennyplunkett/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-medium text-white/80 backdrop-blur transition hover:bg-white/10"
