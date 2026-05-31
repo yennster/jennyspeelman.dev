@@ -138,7 +138,7 @@ export default function Home() {
                     </p>
 
                     <div className="mt-5 flex items-center justify-between text-xs font-mono text-white/40">
-                      <span>{app.slug}.jennyspeelman.dev</span>
+                      <span>{app.displayHost ?? `${app.slug}.jennyspeelman.dev`}</span>
                       {isLinkable && (
                         <span
                           aria-hidden

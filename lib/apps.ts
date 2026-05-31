@@ -9,6 +9,7 @@ export type ClaudeApp = {
   inDevelopment?: boolean;
   icon: string;
   accent: string;
+  displayHost?: string;
 };
 
 export const apps: ClaudeApp[] = [
@@ -22,5 +23,53 @@ export const apps: ClaudeApp[] = [
     inDevelopment: true,
     icon: "🧬",
     accent: "from-fuchsia-500 to-purple-600",
+  },
+  {
+    slug: "fanficly",
+    name: "Fanficly",
+    description:
+      "Open-source, ad-free iPhone & iPad reader for AO3 fanfiction. Smart prompt-style search, offline library, native iOS.",
+    url: "https://github.com/yennster/fanficly",
+    status: "live",
+    inDevelopment: true,
+    icon: "📖",
+    accent: "from-rose-500 to-orange-500",
+    displayHost: "github.com/yennster/fanficly",
+  },
+  {
+    slug: "promptlog",
+    name: "Promptlog",
+    description:
+      "Local macOS app that audits the prompts you send to Claude, ChatGPT, Codex, and Antigravity desktop apps. Session-based, with a Next.js dashboard and PDF/XLSX export.",
+    url: "https://github.com/yennster/promptlog",
+    status: "live",
+    inDevelopment: true,
+    icon: "📊",
+    accent: "from-sky-500 to-indigo-600",
+    displayHost: "github.com/yennster/promptlog",
+  },
+  {
+    slug: "descript-automation",
+    name: "Descript Automation",
+    description:
+      "Automate creation of demo videos for web apps via Descript: capture, script, draft.",
+    url: "https://github.com/yennster/automated-descript-creation",
+    status: "live",
+    inDevelopment: true,
+    icon: "🎬",
+    accent: "from-red-800 to-rose-950",
+    displayHost: "github.com/yennster/automated-descript-creation",
+  },
+  {
+    slug: "hue-house",
+    name: "Hue House",
+    description:
+      "Native macOS and iOS control surface for Philips Hue lights and gradients.",
+    url: "https://github.com/yennster/hue-house",
+    status: "live",
+    inDevelopment: true,
+    icon: "💡",
+    accent: "from-cyan-400 via-purple-500 to-pink-500",
+    displayHost: "github.com/yennster/hue-house",
   },
 ];
