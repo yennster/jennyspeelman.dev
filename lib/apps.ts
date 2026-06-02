@@ -61,6 +61,17 @@ export const apps: ClaudeApp[] = [
     displayHost: "github.com/yennster/automated-descript-creation",
   },
   {
+    slug: "label",
+    name: "EI Label Studio",
+    description:
+      "Connect an Edge Impulse project, pull its samples, and relabel them in an embedded Label Studio canvas — then push every correction straight back.",
+    url: "https://label.jennyspeelman.dev",
+    status: "live",
+    inDevelopment: true,
+    icon: "🏷️",
+    accent: "from-emerald-400 to-teal-600",
+  },
+  {
     slug: "hue-house",
     name: "Hue House",
     description:
