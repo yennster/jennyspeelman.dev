@@ -27,7 +27,7 @@ function AppCard({ app, index }: { app: ClaudeApp; index: number }) {
     <li className="fade-up" style={{ animationDelay: `${120 + index * 80}ms` }}>
       <Tag
         {...linkProps}
-        className={`group relative block h-full overflow-hidden rounded-2xl border border-white/10 bg-card/60 p-6 backdrop-blur transition ${
+        className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-card/60 p-6 backdrop-blur transition ${
           isLinkable
             ? "hover:-translate-y-1 hover:border-white/20 hover:bg-card/80"
             : "opacity-80"
@@ -69,7 +69,7 @@ function AppCard({ app, index }: { app: ClaudeApp; index: number }) {
           {app.description}
         </p>
 
-        <div className="mt-5 flex items-center justify-between text-xs font-mono text-white/40">
+        <div className="mt-auto flex items-center justify-between pt-5 text-xs font-mono text-white/40">
           <span>{app.displayHost ?? `${app.slug}.jennyspeelman.dev`}</span>
           {isLinkable && (
             <span
