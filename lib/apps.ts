@@ -99,12 +99,12 @@ export const apps: ClaudeApp[] = [
     name: "Differentialis",
     description:
       "Native macOS app for comparing and merging text, images, and folders — with git built in. SwiftUI + Liquid Glass, zero dependencies.",
-    url: "https://github.com/yennster/differentialis",
+    url: "https://differentialis.app",
     status: "live",
     inDevelopment: true,
     icon: "🔀",
     accent: "from-violet-500 to-slate-800",
-    displayHost: "github.com/yennster/differentialis",
+    displayHost: "differentialis.app",
   },
   {
     slug: "party-house",
