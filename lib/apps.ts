@@ -29,12 +29,12 @@ export const apps: ClaudeApp[] = [
     name: "Fanficly",
     description:
       "Open-source, ad-free iPhone & iPad reader for AO3 fanfiction. Smart prompt-style search, offline library, native iOS.",
-    url: "https://github.com/yennster/fanficly",
+    url: "https://apps.apple.com/us/app/fanficly-ao3-fanfiction/id6775897153",
     status: "live",
     inDevelopment: true,
     icon: "📖",
     accent: "from-rose-500 to-orange-500",
-    displayHost: "github.com/yennster/fanficly",
+    displayHost: "apps.apple.com/app/fanficly",
   },
   {
     slug: "promptlog",
@@ -84,15 +84,15 @@ export const apps: ClaudeApp[] = [
     displayHost: "github.com/yennster/differentialis",
   },
   {
-    slug: "hue-house",
-    name: "Hue House",
+    slug: "party-house",
+    name: "Party House",
     description:
-      "Native macOS and iOS control surface for Philips Hue lights and gradients.",
-    url: "https://github.com/yennster/hue-house",
+      "One native app for every smart light in your house — Hue, Home Assistant, LIFX. iPhone, iPad, Mac, menu bar, and widgets. SwiftUI + Liquid Glass.",
+    url: "https://github.com/yennster/party-house",
     status: "live",
     inDevelopment: true,
-    icon: "💡",
-    accent: "from-cyan-400 via-purple-500 to-pink-500",
-    displayHost: "github.com/yennster/hue-house",
+    icon: "🪩",
+    accent: "from-pink-500 via-purple-500 to-cyan-400",
+    displayHost: "github.com/yennster/party-house",
   },
 ];
