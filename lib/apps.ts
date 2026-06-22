@@ -13,6 +13,9 @@ export type ClaudeApp = {
   displayHost?: string;
 };
 
+// Highlighted at the top of the page, in this order.
+const featuredSlugs = ["fanficly", "differentialis", "synthetic"];
+
 export const apps: ClaudeApp[] = [
   {
     slug: "synthetic",
@@ -119,3 +122,12 @@ export const apps: ClaudeApp[] = [
     displayHost: "github.com/yennster/party-house",
   },
 ];
+
+export const featuredApps: ClaudeApp[] = featuredSlugs
+  .map((slug) => apps.find((app) => app.slug === slug))
+  .filter((app): app is ClaudeApp => Boolean(app));
+
+// Everything not surfaced in the Featured section.
+export const otherApps: ClaudeApp[] = apps.filter(
+  (app) => !featuredSlugs.includes(app.slug),
+);

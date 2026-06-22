@@ -1,4 +1,4 @@
-import { apps, type AppStatus } from "@/lib/apps";
+import { apps, otherApps, featuredApps, type AppStatus, type ClaudeApp } from "@/lib/apps";
 
 const statusLabel: Record<AppStatus, string> = {
   live: "Live",
@@ -11,6 +11,79 @@ const statusStyle: Record<AppStatus, string> = {
   beta: "bg-amber-500/10 text-amber-300 ring-1 ring-amber-400/30",
   soon: "bg-white/5 text-white/60 ring-1 ring-white/10",
 };
+
+function AppCard({ app, index }: { app: ClaudeApp; index: number }) {
+  const isLinkable = app.status !== "soon";
+  const Tag = isLinkable ? "a" : "div";
+  const linkProps = isLinkable
+    ? {
+        href: app.url,
+        target: "_blank" as const,
+        rel: "noopener noreferrer",
+      }
+    : {};
+
+  return (
+    <li className="fade-up" style={{ animationDelay: `${120 + index * 80}ms` }}>
+      <Tag
+        {...linkProps}
+        className={`group relative block h-full overflow-hidden rounded-2xl border border-white/10 bg-card/60 p-6 backdrop-blur transition ${
+          isLinkable
+            ? "hover:-translate-y-1 hover:border-white/20 hover:bg-card/80"
+            : "opacity-80"
+        }`}
+      >
+        <div
+          aria-hidden
+          className={`absolute -inset-px -z-10 rounded-2xl bg-gradient-to-br ${app.accent} opacity-0 blur-2xl transition group-hover:opacity-30`}
+        />
+        <div className="flex items-start justify-between gap-3">
+          <div
+            className={`flex size-11 items-center justify-center rounded-xl bg-gradient-to-br ${app.accent} text-xl shadow-lg shadow-black/40`}
+          >
+            <span aria-hidden>{app.icon}</span>
+          </div>
+          <div className="flex flex-wrap justify-end gap-1.5">
+            <span
+              className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${statusStyle[app.status]}`}
+            >
+              {statusLabel[app.status]}
+            </span>
+            {app.shipped && (
+              <span className="rounded-full px-2.5 py-1 text-[11px] font-medium bg-sky-500/10 text-sky-300 ring-1 ring-sky-400/30">
+                Shipped
+              </span>
+            )}
+            {app.inDevelopment && (
+              <span className="rounded-full px-2.5 py-1 text-[11px] font-medium bg-pink-500/10 text-pink-300 ring-1 ring-pink-400/30">
+                In development
+              </span>
+            )}
+          </div>
+        </div>
+
+        <h3 className="mt-5 text-lg font-semibold tracking-tight">
+          {app.name}
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-white/60">
+          {app.description}
+        </p>
+
+        <div className="mt-5 flex items-center justify-between text-xs font-mono text-white/40">
+          <span>{app.displayHost ?? `${app.slug}.jennyspeelman.dev`}</span>
+          {isLinkable && (
+            <span
+              aria-hidden
+              className="transition group-hover:translate-x-0.5 group-hover:text-white/70"
+            >
+              ↗
+            </span>
+          )}
+        </div>
+      </Tag>
+    </li>
+  );
+}
 
 export default function Home() {
   return (
@@ -69,8 +142,28 @@ export default function Home() {
           </div>
         </header>
 
+        {/* featured */}
+        {featuredApps.length > 0 && (
+          <section className="mt-20">
+            <div className="flex items-end justify-between">
+              <h2 className="text-sm font-mono uppercase tracking-widest text-white/50">
+                Featured
+              </h2>
+              <span className="text-sm font-mono text-white/40">
+                Hand-picked
+              </span>
+            </div>
+
+            <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {featuredApps.map((app, i) => (
+                <AppCard key={app.slug} app={app} index={i} />
+              ))}
+            </ul>
+          </section>
+        )}
+
         {/* apps grid */}
-        <section className="mt-20">
+        <section className="mt-16">
           <div className="flex items-end justify-between">
             <h2 className="text-sm font-mono uppercase tracking-widest text-white/50">
               The apps
@@ -81,82 +174,9 @@ export default function Home() {
           </div>
 
           <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {apps.map((app, i) => {
-              const isLinkable = app.status !== "soon";
-              const Tag = isLinkable ? "a" : "div";
-              const linkProps = isLinkable
-                ? {
-                    href: app.url,
-                    target: "_blank" as const,
-                    rel: "noopener noreferrer",
-                  }
-                : {};
-
-              return (
-                <li
-                  key={app.slug}
-                  className="fade-up"
-                  style={{ animationDelay: `${120 + i * 80}ms` }}
-                >
-                  <Tag
-                    {...linkProps}
-                    className={`group relative block h-full overflow-hidden rounded-2xl border border-white/10 bg-card/60 p-6 backdrop-blur transition ${
-                      isLinkable
-                        ? "hover:-translate-y-1 hover:border-white/20 hover:bg-card/80"
-                        : "opacity-80"
-                    }`}
-                  >
-                    <div
-                      aria-hidden
-                      className={`absolute -inset-px -z-10 rounded-2xl bg-gradient-to-br ${app.accent} opacity-0 blur-2xl transition group-hover:opacity-30`}
-                    />
-                    <div className="flex items-start justify-between gap-3">
-                      <div
-                        className={`flex size-11 items-center justify-center rounded-xl bg-gradient-to-br ${app.accent} text-xl shadow-lg shadow-black/40`}
-                      >
-                        <span aria-hidden>{app.icon}</span>
-                      </div>
-                      <div className="flex flex-wrap justify-end gap-1.5">
-                        <span
-                          className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${statusStyle[app.status]}`}
-                        >
-                          {statusLabel[app.status]}
-                        </span>
-                        {app.shipped && (
-                          <span className="rounded-full px-2.5 py-1 text-[11px] font-medium bg-sky-500/10 text-sky-300 ring-1 ring-sky-400/30">
-                            Shipped
-                          </span>
-                        )}
-                        {app.inDevelopment && (
-                          <span className="rounded-full px-2.5 py-1 text-[11px] font-medium bg-pink-500/10 text-pink-300 ring-1 ring-pink-400/30">
-                            In development
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    <h3 className="mt-5 text-lg font-semibold tracking-tight">
-                      {app.name}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/60">
-                      {app.description}
-                    </p>
-
-                    <div className="mt-5 flex items-center justify-between text-xs font-mono text-white/40">
-                      <span>{app.displayHost ?? `${app.slug}.jennyspeelman.dev`}</span>
-                      {isLinkable && (
-                        <span
-                          aria-hidden
-                          className="transition group-hover:translate-x-0.5 group-hover:text-white/70"
-                        >
-                          ↗
-                        </span>
-                      )}
-                    </div>
-                  </Tag>
-                </li>
-              );
-            })}
+            {otherApps.map((app, i) => (
+              <AppCard key={app.slug} app={app} index={i} />
+            ))}
           </ul>
         </section>
 
