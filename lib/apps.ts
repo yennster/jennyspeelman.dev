@@ -73,6 +73,17 @@ export const apps: ClaudeApp[] = [
     accent: "from-emerald-400 to-teal-600",
   },
   {
+    slug: "csv",
+    name: "EI CSV Editor",
+    description:
+      "Web tool for visualizing and editing time-series sensor data from CSVs — auto-scaled per-channel lanes on a shared time axis, with drag-to-regroup, formulas, cropping, and direct Edge Impulse upload.",
+    url: "https://csv.jennyspeelman.dev",
+    status: "live",
+    inDevelopment: true,
+    icon: "📈",
+    accent: "from-amber-400 to-orange-600",
+  },
+  {
     slug: "differentialis",
     name: "Differentialis",
     description:
