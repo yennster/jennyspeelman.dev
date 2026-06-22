@@ -7,6 +7,7 @@ export type ClaudeApp = {
   url: string;
   status: AppStatus;
   inDevelopment?: boolean;
+  shipped?: boolean;
   icon: string;
   accent: string;
   displayHost?: string;
@@ -31,7 +32,7 @@ export const apps: ClaudeApp[] = [
       "Open-source, ad-free iPhone & iPad reader for AO3 fanfiction. Smart prompt-style search, offline library, native iOS.",
     url: "https://apps.apple.com/us/app/fanficly-ao3-fanfiction/id6775897153",
     status: "live",
-    inDevelopment: true,
+    shipped: true,
     icon: "📖",
     accent: "from-rose-500 to-orange-500",
     displayHost: "apps.apple.com/app/fanficly",

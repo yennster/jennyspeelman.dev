@@ -122,6 +122,11 @@ export default function Home() {
                         >
                           {statusLabel[app.status]}
                         </span>
+                        {app.shipped && (
+                          <span className="rounded-full px-2.5 py-1 text-[11px] font-medium bg-sky-500/10 text-sky-300 ring-1 ring-sky-400/30">
+                            Shipped
+                          </span>
+                        )}
                         {app.inDevelopment && (
                           <span className="rounded-full px-2.5 py-1 text-[11px] font-medium bg-pink-500/10 text-pink-300 ring-1 ring-pink-400/30">
                             In development
