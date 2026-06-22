@@ -84,6 +84,17 @@ export const apps: ClaudeApp[] = [
     accent: "from-amber-400 to-orange-600",
   },
   {
+    slug: "dash",
+    name: "EI Plotly Dashboard",
+    description:
+      "Interactive Plotly time-series dashboard for Edge Impulse projects — per-channel subplots on a shared timeline, with zoom, pan, a range slider, and PNG export. Standalone or embedded in Edge Impulse Studio.",
+    url: "https://dash.jennyspeelman.dev",
+    status: "live",
+    inDevelopment: true,
+    icon: "🎛️",
+    accent: "from-blue-500 to-violet-700",
+  },
+  {
     slug: "differentialis",
     name: "Differentialis",
     description:
