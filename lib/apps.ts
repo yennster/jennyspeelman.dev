@@ -133,6 +133,18 @@ export const apps: ClaudeApp[] = [
     displayHost: "mmocompass.com",
   },
   {
+    slug: "couture-kingdom",
+    name: "Couture Kingdom",
+    description:
+      "Cozy browser-based fashion MMO: walk painted isometric cities with friends, craft, buy, and trade outfits, decorate your house, and bring your pets along.",
+    url: "https://couture-kingdom.com",
+    status: "live",
+    inDevelopment: true,
+    icon: "👑",
+    accent: "from-[#f7a8cf] to-[#f6c27f]",
+    displayHost: "couture-kingdom.com",
+  },
+  {
     slug: "music",
     name: "Apple Music → Spotify",
     description:
