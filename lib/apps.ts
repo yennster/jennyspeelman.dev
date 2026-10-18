@@ -26,7 +26,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "🧬",
-    accent: "from-fuchsia-500 to-purple-600",
+    accent: "from-fuchsia-400 to-purple-500",
   },
   {
     slug: "fanficly",
@@ -37,7 +37,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     shipped: true,
     icon: "📖",
-    accent: "from-rose-500 to-orange-500",
+    accent: "from-rose-400 to-orange-400",
     displayHost: "apps.apple.com/app/fanficly",
   },
   {
@@ -49,7 +49,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "📊",
-    accent: "from-sky-500 to-indigo-600",
+    accent: "from-sky-400 to-indigo-500",
     displayHost: "github.com/yennster/promptlog",
   },
   {
@@ -61,7 +61,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "🎬",
-    accent: "from-red-800 to-rose-950",
+    accent: "from-red-400 to-rose-600",
     displayHost: "github.com/yennster/automated-descript-creation",
   },
   {
@@ -73,7 +73,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "🏷️",
-    accent: "from-emerald-400 to-teal-600",
+    accent: "from-emerald-300 to-teal-500",
   },
   {
     slug: "csv",
@@ -84,7 +84,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "📈",
-    accent: "from-amber-400 to-orange-600",
+    accent: "from-amber-300 to-orange-500",
   },
   {
     slug: "dash",
@@ -95,7 +95,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "🎛️",
-    accent: "from-blue-500 to-violet-700",
+    accent: "from-blue-400 to-violet-500",
   },
   {
     slug: "differentialis",
@@ -106,7 +106,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     shipped: true,
     icon: "🔀",
-    accent: "from-violet-500 to-slate-800",
+    accent: "from-violet-400 to-slate-500",
     displayHost: "differentialis.app",
   },
   {
@@ -118,7 +118,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "🪩",
-    accent: "from-pink-500 via-purple-500 to-cyan-400",
+    accent: "from-pink-400 via-purple-400 to-cyan-300",
     displayHost: "github.com/yennster/party-house",
   },
 ];

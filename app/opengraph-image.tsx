@@ -15,8 +15,8 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "80px",
-          background: "#0a0a0f",
-          color: "#f5f5f7",
+          background: "#fff3f8",
+          color: "#3b0a2a",
           fontFamily: "system-ui, -apple-system, sans-serif",
           position: "relative",
         }}
@@ -31,7 +31,7 @@ export default async function OpengraphImage() {
             height: "700px",
             borderRadius: "9999px",
             background:
-              "radial-gradient(circle, rgba(124,58,237,0.85) 0%, rgba(124,58,237,0) 65%)",
+              "radial-gradient(circle, rgba(255,179,214,0.95) 0%, rgba(255,179,214,0) 65%)",
             display: "flex",
           }}
         />
@@ -44,7 +44,7 @@ export default async function OpengraphImage() {
             height: "640px",
             borderRadius: "9999px",
             background:
-              "radial-gradient(circle, rgba(236,72,153,0.75) 0%, rgba(236,72,153,0) 65%)",
+              "radial-gradient(circle, rgba(226,207,255,0.9) 0%, rgba(226,207,255,0) 65%)",
             display: "flex",
           }}
         />
@@ -57,7 +57,7 @@ export default async function OpengraphImage() {
             height: "560px",
             borderRadius: "9999px",
             background:
-              "radial-gradient(circle, rgba(6,182,212,0.65) 0%, rgba(6,182,212,0) 65%)",
+              "radial-gradient(circle, rgba(255,214,234,0.95) 0%, rgba(255,214,234,0) 65%)",
             display: "flex",
           }}
         />
@@ -71,11 +71,11 @@ export default async function OpengraphImage() {
               gap: "12px",
               padding: "10px 20px",
               borderRadius: "9999px",
-              border: "1px solid rgba(255,255,255,0.15)",
-              background: "rgba(255,255,255,0.06)",
+              border: "3px solid #f7b6d4",
+              background: "#ffffff",
               fontSize: "24px",
               fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
-              color: "rgba(255,255,255,0.75)",
+              color: "#e01e84",
             }}
           >
             <div
@@ -104,16 +104,16 @@ export default async function OpengraphImage() {
               display: "flex",
               flexWrap: "wrap",
               fontSize: "112px",
-              fontWeight: 600,
+              fontWeight: 800,
               letterSpacing: "-0.04em",
               lineHeight: 1.05,
             }}
           >
-            <span style={{ color: "#f5f5f7" }}>Jenny&apos;s apps,&nbsp;</span>
+            <span style={{ color: "#e01e84" }}>Jenny&apos;s apps,&nbsp;</span>
             <span
               style={{
                 background:
-                  "linear-gradient(90deg, #e879f9 0%, #f472b6 50%, #67e8f9 100%)",
+                  "linear-gradient(90deg, #ff4fa3 0%, #c4126c 50%, #a855f7 100%)",
                 backgroundClip: "text",
                 color: "transparent",
               }}
@@ -125,7 +125,7 @@ export default async function OpengraphImage() {
             style={{
               display: "flex",
               fontSize: "38px",
-              color: "rgba(245,245,247,0.65)",
+              color: "#8a4a6e",
               lineHeight: 1.3,
               maxWidth: "900px",
             }}
@@ -141,7 +141,7 @@ export default async function OpengraphImage() {
             justifyContent: "space-between",
             alignItems: "center",
             fontSize: "26px",
-            color: "rgba(245,245,247,0.5)",
+            color: "#e01e84",
             fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
           }}
         >

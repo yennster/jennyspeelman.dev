@@ -1,11 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0f;
-  --foreground: #f5f5f7;
-  --muted: #9ca3af;
-  --card: #11121a;
-  --border: rgba(255, 255, 255, 0.08);
+  --background: #fff3f8;
+  --foreground: #3b0a2a;
+  --muted: #8a4a6e;
+  --card: #ffffff;
+  --border: #f7c4dc;
+  --pink: #ff4fa3;
+  --hot: #e01e84;
+  --berry: #bc4c86;
+  --lilac: #c9a7ff;
 }
 
 @theme inline {
@@ -14,8 +18,14 @@
   --color-muted: var(--muted);
   --color-card: var(--card);
   --color-border: var(--border);
+  --color-pink: var(--pink);
+  --color-hot: var(--hot);
+  --color-berry: var(--berry);
+  --color-lilac: var(--lilac);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-pixel: var(--font-pixelify);
+  --font-serif: var(--font-instrument-serif);
 }
 
 html,
@@ -27,6 +37,53 @@ body {
 body {
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #ffb3d6;
+  color: #3b0a2a;
+}
+
+/* ---------- background ---------- */
+
+.dot-grid {
+  background-image: radial-gradient(#f4a6cb 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 95%);
+}
+
+.glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.glow-1 {
+  width: 34rem;
+  height: 34rem;
+  background: radial-gradient(circle, #ffb3d6 0%, transparent 65%);
+  top: -10rem;
+  right: -8rem;
+  animation: drift 20s ease-in-out infinite;
+}
+
+.glow-2 {
+  width: 28rem;
+  height: 28rem;
+  background: radial-gradient(circle, #e2cfff 0%, transparent 65%);
+  top: 18rem;
+  left: -10rem;
+  animation: drift-slow 24s ease-in-out infinite;
+}
+
+.glow-3 {
+  width: 26rem;
+  height: 26rem;
+  background: radial-gradient(circle, #ffd6ea 0%, transparent 65%);
+  bottom: 10rem;
+  right: 10%;
+  animation: drift 28s ease-in-out infinite;
 }
 
 @keyframes drift {
@@ -49,49 +106,137 @@ body {
   }
 }
 
-.blob {
+/* ---------- sparkles ---------- */
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.75) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(20deg);
+  }
+}
+
+.sparkle {
   position: absolute;
-  border-radius: 9999px;
-  filter: blur(80px);
-  opacity: 0.55;
   pointer-events: none;
-  mix-blend-mode: screen;
+  animation: twinkle 3.2s ease-in-out infinite;
 }
 
-.blob-1 {
-  width: 36rem;
-  height: 36rem;
-  background: radial-gradient(circle, #7c3aed 0%, transparent 60%);
-  top: -8rem;
-  left: -8rem;
-  animation: drift 18s ease-in-out infinite;
+/* ---------- marquee ---------- */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-.blob-2 {
-  width: 32rem;
-  height: 32rem;
-  background: radial-gradient(circle, #ec4899 0%, transparent 60%);
-  top: 20%;
-  right: -10rem;
-  animation: drift-slow 22s ease-in-out infinite;
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
 }
 
-.blob-3 {
-  width: 28rem;
-  height: 28rem;
-  background: radial-gradient(circle, #06b6d4 0%, transparent 60%);
-  bottom: -10rem;
-  left: 30%;
-  animation: drift 26s ease-in-out infinite;
+/* ---------- glossy bits ---------- */
+
+.chrome-text {
+  background: linear-gradient(
+    180deg,
+    #ff8cc6 0%,
+    #ff3d9a 45%,
+    #c4126c 55%,
+    #ff5fae 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 0 #fff) drop-shadow(0 6px 14px rgba(224, 30, 132, 0.25));
 }
 
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+.gloss-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ff7fbf 0%, #ff3d9a 55%, #e01e84 100%);
+  color: #fff;
+  box-shadow:
+    inset 0 -2px 0 rgba(120, 0, 60, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 6px 18px -6px rgba(224, 30, 132, 0.6);
+  text-shadow: 0 1px 0 rgba(140, 0, 70, 0.35);
 }
+
+.gloss-btn::before {
+  content: "";
+  position: absolute;
+  inset: 2px 6px auto 6px;
+  height: 45%;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.05));
+  z-index: -1;
+}
+
+.gloss-btn-light {
+  background: linear-gradient(180deg, #ffffff 0%, #fff0f7 60%, #ffe0ef 100%);
+  color: #b0105f;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -2px 0 rgba(224, 30, 132, 0.12),
+    0 0 0 1.5px #f7b6d4,
+    0 6px 16px -8px rgba(224, 30, 132, 0.45);
+}
+
+.gloss-bubble {
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    inset 0 -3px 6px rgba(0, 0, 0, 0.15),
+    inset 0 2px 2px rgba(255, 255, 255, 0.55),
+    0 6px 14px -6px rgba(120, 0, 60, 0.45);
+}
+
+.gloss-bubble::after {
+  content: "";
+  position: absolute;
+  inset: 3px 5px 50% 5px;
+  border-radius: 9999px 9999px 40% 40%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+}
+
+/* sticker-y card with a hard pink offset shadow */
+.y2k-card {
+  background: #fff;
+  border: 2px solid #f7b6d4;
+  box-shadow: 6px 6px 0 #ffd0e5;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+a.y2k-card:hover {
+  transform: translate(-3px, -3px);
+  border-color: #ff4fa3;
+  box-shadow: 9px 9px 0 #ff9fcb;
+}
+
+.title-bar {
+  background: linear-gradient(180deg, #ffd3e8 0%, #ffb3d6 50%, #ff9cca 51%, #ffc2df 100%);
+  border-bottom: 2px solid #f7b6d4;
+}
+
+.pixel-badge {
+  font-family: var(--font-pixelify), monospace;
+  image-rendering: pixelated;
+}
+
+/* ---------- entrance ---------- */
 
 @keyframes fade-up {
   from {
@@ -106,4 +251,13 @@ body {
 
 .fade-up {
   animation: fade-up 0.6s ease-out backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow,
+  .sparkle,
+  .marquee-track,
+  .fade-up {
+    animation: none;
+  }
 }
