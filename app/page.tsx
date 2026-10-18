@@ -2,6 +2,7 @@ import {
   apps,
   otherApps,
   featuredApps,
+  monogram,
   type AppStatus,
   type ClaudeApp,
 } from "@/lib/apps";
@@ -20,10 +21,6 @@ const links = [
 
 function hostFor(app: ClaudeApp) {
   return app.displayHost ?? `${app.slug}.jennyspeelman.dev`;
-}
-
-function monogram(app: ClaudeApp) {
-  return app.name.replace(/^EI /, "").charAt(0);
 }
 
 function linkProps(app: ClaudeApp) {

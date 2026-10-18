@@ -131,3 +131,14 @@ export const featuredApps: ClaudeApp[] = featuredSlugs
 export const otherApps: ClaudeApp[] = apps.filter(
   (app) => !featuredSlugs.includes(app.slug),
 );
+
+// Letter shown on an app's icon.
+export function monogram(app: ClaudeApp) {
+  return app.name.replace(/^EI /, "").charAt(0);
+}
+
+// Hex stops from an app's Tailwind gradient, for places Tailwind can't reach
+// (the OG image).
+export function accentStops(app: ClaudeApp) {
+  return [...app.accent.matchAll(/#[0-9a-f]{6}/gi)].map((m) => m[0]);
+}
