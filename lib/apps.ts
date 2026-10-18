@@ -26,7 +26,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "🧬",
-    accent: "from-fuchsia-500 to-purple-600",
+    accent: "from-[#e58fc0] to-[#a979d6]",
   },
   {
     slug: "fanficly",
@@ -37,7 +37,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     shipped: true,
     icon: "📖",
-    accent: "from-rose-500 to-orange-500",
+    accent: "from-[#f59ab2] to-[#e66f8f]",
     displayHost: "apps.apple.com/app/fanficly",
   },
   {
@@ -49,7 +49,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "📊",
-    accent: "from-sky-500 to-indigo-600",
+    accent: "from-[#9fbfec] to-[#7a8fdc]",
     displayHost: "github.com/yennster/promptlog",
   },
   {
@@ -61,7 +61,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "🎬",
-    accent: "from-red-800 to-rose-950",
+    accent: "from-[#ef8f8f] to-[#c95777]",
     displayHost: "github.com/yennster/automated-descript-creation",
   },
   {
@@ -73,7 +73,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "🏷️",
-    accent: "from-emerald-400 to-teal-600",
+    accent: "from-[#8fd3bd] to-[#55ad9c]",
   },
   {
     slug: "csv",
@@ -84,7 +84,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "📈",
-    accent: "from-amber-400 to-orange-600",
+    accent: "from-[#f6c27f] to-[#ea9466]",
   },
   {
     slug: "dash",
@@ -95,7 +95,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "🎛️",
-    accent: "from-blue-500 to-violet-700",
+    accent: "from-[#a8b4f0] to-[#8a76d6]",
   },
   {
     slug: "differentialis",
@@ -106,7 +106,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     shipped: true,
     icon: "🔀",
-    accent: "from-violet-500 to-slate-800",
+    accent: "from-[#c6a8ec] to-[#8e86b8]",
     displayHost: "differentialis.app",
   },
   {
@@ -118,7 +118,7 @@ export const apps: ClaudeApp[] = [
     status: "live",
     inDevelopment: true,
     icon: "🪩",
-    accent: "from-pink-500 via-purple-500 to-cyan-400",
+    accent: "from-[#f7a8cf] via-[#c99ae6] to-[#8fcfe6]",
     displayHost: "github.com/yennster/party-house",
   },
 ];
@@ -131,3 +131,14 @@ export const featuredApps: ClaudeApp[] = featuredSlugs
 export const otherApps: ClaudeApp[] = apps.filter(
   (app) => !featuredSlugs.includes(app.slug),
 );
+
+// Letter shown on an app's icon.
+export function monogram(app: ClaudeApp) {
+  return app.name.replace(/^EI /, "").charAt(0);
+}
+
+// Hex stops from an app's Tailwind gradient, for places Tailwind can't reach
+// (the OG image).
+export function accentStops(app: ClaudeApp) {
+  return [...app.accent.matchAll(/#[0-9a-f]{6}/gi)].map((m) => m[0]);
+}

@@ -1,4 +1,11 @@
-import { apps, otherApps, featuredApps, type AppStatus, type ClaudeApp } from "@/lib/apps";
+import {
+  apps,
+  otherApps,
+  featuredApps,
+  monogram,
+  type AppStatus,
+  type ClaudeApp,
+} from "@/lib/apps";
 
 const statusLabel: Record<AppStatus, string> = {
   live: "Live",
@@ -6,80 +13,176 @@ const statusLabel: Record<AppStatus, string> = {
   soon: "Coming soon",
 };
 
-const statusStyle: Record<AppStatus, string> = {
-  live: "bg-emerald-500/10 text-emerald-300 ring-1 ring-emerald-400/30",
-  beta: "bg-amber-500/10 text-amber-300 ring-1 ring-amber-400/30",
-  soon: "bg-white/5 text-white/60 ring-1 ring-white/10",
-};
+const links = [
+  { label: "Portfolio", href: "https://jennyplunkett.me" },
+  { label: "GitHub", href: "https://github.com/yennster" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/jennyplunkett/" },
+];
 
-function AppCard({ app, index }: { app: ClaudeApp; index: number }) {
-  const isLinkable = app.status !== "soon";
-  const Tag = isLinkable ? "a" : "div";
-  const linkProps = isLinkable
-    ? {
-        href: app.url,
-        target: "_blank" as const,
-        rel: "noopener noreferrer",
-      }
-    : {};
+function hostFor(app: ClaudeApp) {
+  return app.displayHost ?? `${app.slug}.jennyspeelman.dev`;
+}
+
+function linkProps(app: ClaudeApp) {
+  return app.status === "soon"
+    ? {}
+    : { href: app.url, target: "_blank", rel: "noopener noreferrer" };
+}
+
+function AppIcon({ app, className }: { app: ClaudeApp; className: string }) {
+  return (
+    <div
+      aria-hidden
+      className={`app-icon flex shrink-0 items-center justify-center bg-gradient-to-br ${app.accent} font-display text-white ${className}`}
+    >
+      <span>{monogram(app)}</span>
+    </div>
+  );
+}
+
+function Meta({ app }: { app: ClaudeApp }) {
+  return (
+    <p className="flex flex-wrap items-center gap-x-2 text-[13px] text-muted">
+      <span className="inline-flex items-center gap-1.5">
+        <span
+          className={`size-1.5 rounded-full ${
+            app.status === "live" ? "bg-emerald-500" : "bg-amber-400"
+          }`}
+        />
+        {statusLabel[app.status]}
+      </span>
+      {app.shipped && (
+        <>
+          <span aria-hidden>·</span>
+          <span className="font-medium text-rose">Shipped</span>
+        </>
+      )}
+      {app.inDevelopment && (
+        <>
+          <span aria-hidden>·</span>
+          <span>In development</span>
+        </>
+      )}
+    </p>
+  );
+}
+
+function Sticker({ count }: { count: number }) {
+  const points = Array.from({ length: 28 }, (_, i) => {
+    const r = i % 2 === 0 ? 50 : 44;
+    const a = (Math.PI * 2 * i) / 28;
+    return `${(50 + r * Math.cos(a)).toFixed(2)},${(50 + r * Math.sin(a)).toFixed(2)}`;
+  }).join(" ");
 
   return (
-    <li className="fade-up" style={{ animationDelay: `${120 + index * 80}ms` }}>
-      <Tag
-        {...linkProps}
-        className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-card/60 p-6 backdrop-blur transition ${
-          isLinkable
-            ? "hover:-translate-y-1 hover:border-white/20 hover:bg-card/80"
-            : "opacity-80"
-        }`}
+    <div className="relative size-28 rotate-[12deg]">
+      <svg
+        viewBox="0 0 100 100"
+        className="absolute inset-0 drop-shadow-[0_10px_18px_rgba(68,25,47,0.18)]"
       >
-        <div
-          aria-hidden
-          className={`absolute -inset-px -z-10 rounded-2xl bg-gradient-to-br ${app.accent} opacity-0 blur-2xl transition group-hover:opacity-30`}
+        <defs>
+          <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#ffd3e6" />
+            <stop offset="0.35" stopColor="#e9dcff" />
+            <stop offset="0.65" stopColor="#d4f0fd" />
+            <stop offset="1" stopColor="#ffe1ee" />
+          </linearGradient>
+        </defs>
+        <polygon
+          points={points}
+          fill="url(#foil)"
+          stroke="#fff"
+          strokeWidth="1.5"
         />
-        <div className="flex items-start justify-between gap-3">
-          <div
-            className={`flex size-11 items-center justify-center rounded-xl bg-gradient-to-br ${app.accent} text-xl shadow-lg shadow-black/40`}
-          >
-            <span aria-hidden>{app.icon}</span>
-          </div>
-          <div className="flex flex-wrap justify-end gap-1.5">
-            <span
-              className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${statusStyle[app.status]}`}
-            >
-              {statusLabel[app.status]}
-            </span>
-            {app.shipped && (
-              <span className="rounded-full px-2.5 py-1 text-[11px] font-medium bg-sky-500/10 text-sky-300 ring-1 ring-sky-400/30">
-                Shipped
-              </span>
-            )}
-            {app.inDevelopment && (
-              <span className="rounded-full px-2.5 py-1 text-[11px] font-medium bg-pink-500/10 text-pink-300 ring-1 ring-pink-400/30">
-                In development
-              </span>
-            )}
-          </div>
-        </div>
+      </svg>
+      <div className="relative flex h-full flex-col items-center justify-center text-center leading-none">
+        <span className="font-display text-4xl text-foreground">{count}</span>
+        <span className="font-display mt-1 text-sm italic text-rose">apps</span>
+      </div>
+    </div>
+  );
+}
 
-        <h3 className="mt-5 text-lg font-semibold tracking-tight">
-          {app.name}
-        </h3>
-        <p className="mt-2 text-sm leading-relaxed text-white/60">
-          {app.description}
-        </p>
-
-        <div className="mt-auto flex items-center justify-between pt-5 text-xs font-mono text-white/40">
-          <span>{app.displayHost ?? `${app.slug}.jennyspeelman.dev`}</span>
-          {isLinkable && (
-            <span
-              aria-hidden
-              className="transition group-hover:translate-x-0.5 group-hover:text-white/70"
+function HomeScreen() {
+  return (
+    <ul className="grid grid-cols-3 gap-x-4 gap-y-6 rounded-[2.5rem] bg-white/55 p-7 shadow-[0_30px_60px_-34px_rgba(68,25,47,0.45)] ring-1 ring-white backdrop-blur-sm">
+      {apps.map((app) => {
+        const Tag = app.status === "soon" ? "div" : "a";
+        return (
+          <li key={app.slug}>
+            <Tag
+              {...linkProps(app)}
+              className="group flex flex-col items-center gap-2"
             >
-              ↗
+              <AppIcon
+                app={app}
+                className="size-16 text-3xl transition duration-300 group-hover:-translate-y-1"
+              />
+              <span className="w-full truncate text-center text-[11px] text-muted">
+                {app.name.replace(/^EI /, "")}
+              </span>
+            </Tag>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function FeaturedApp({ app, index }: { app: ClaudeApp; index: number }) {
+  const Tag = app.status === "soon" ? "div" : "a";
+  return (
+    <li className="rise" style={{ animationDelay: `${200 + index * 90}ms` }}>
+      <Tag
+        {...linkProps(app)}
+        className="group flex h-full flex-col gap-7 rounded-[2rem] bg-paper p-7 ring-1 ring-line transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(68,25,47,0.4)] sm:flex-row sm:gap-8 sm:p-9 xl:flex-col xl:gap-7 xl:p-8"
+      >
+        <AppIcon
+          app={app}
+          className="size-20 text-4xl transition duration-300 group-hover:-rotate-3"
+        />
+        <div className="flex flex-1 flex-col">
+          <h3 className="font-display text-3xl tracking-tight">{app.name}</h3>
+          <div className="mt-2">
+            <Meta app={app} />
+          </div>
+          <p className="mt-4 max-w-2xl leading-relaxed text-muted">
+            {app.description}
+          </p>
+          <p className="mt-auto pt-7 text-sm font-medium text-rose">
+            <span className="border-b border-rose/30 pb-0.5 transition group-hover:border-rose">
+              {hostFor(app)}
             </span>
-          )}
+          </p>
         </div>
+      </Tag>
+    </li>
+  );
+}
+
+function AppRow({ app }: { app: ClaudeApp }) {
+  const Tag = app.status === "soon" ? "div" : "a";
+  return (
+    <li>
+      <Tag
+        {...linkProps(app)}
+        className="group grid grid-cols-[auto_1fr] items-start gap-x-5 gap-y-3 py-7 sm:grid-cols-[auto_1fr_auto] sm:gap-x-6"
+      >
+        <AppIcon app={app} className="size-12 text-xl sm:size-14 sm:text-2xl" />
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+            <h3 className="font-display text-2xl tracking-tight transition group-hover:text-rose">
+              {app.name}
+            </h3>
+            <Meta app={app} />
+          </div>
+          <p className="mt-2 max-w-2xl leading-relaxed text-muted">
+            {app.description}
+          </p>
+        </div>
+        <span className="col-start-2 truncate text-sm sm:col-start-auto sm:pt-1 text-muted transition group-hover:text-rose sm:max-w-[15rem] sm:text-right">
+          {hostFor(app)}
+        </span>
       </Tag>
     </li>
   );
@@ -87,114 +190,112 @@ function AppCard({ app, index }: { app: ClaudeApp; index: number }) {
 
 export default function Home() {
   return (
-    <main className="relative flex-1 overflow-hidden">
-      {/* animated background */}
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <div className="blob blob-1" />
-        <div className="blob blob-2" />
-        <div className="blob blob-3" />
-        <div className="absolute inset-0 grid-bg" />
+    <main className="flex-1">
+      <div className="gingham border-b border-line">
+        <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
+          <nav className="flex items-center justify-between py-7">
+            <span className="font-display text-lg italic">Jenny Speelman</span>
+            <ul className="flex items-center gap-5 text-sm sm:gap-7">
+              {links.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted transition hover:text-rose"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <header className="grid items-center gap-16 pt-14 pb-20 sm:pt-20 sm:pb-28 xl:grid-cols-[1.25fr_1fr]">
+            <div>
+              <h1 className="font-display rise text-[3.75rem] leading-[0.95] tracking-[-0.03em] sm:text-8xl lg:text-[8.5rem] xl:text-[7.25rem]">
+                Jenny&apos;s apps,
+                <br />
+                <span className="wonk italic text-rose">built with AI.</span>
+              </h1>
+              <p
+                className="rise mt-8 max-w-md text-lg leading-relaxed text-muted sm:text-xl"
+                style={{ animationDelay: "100ms" }}
+              >
+                A playground for the things I prompt into existence.
+              </p>
+            </div>
+            <div
+              className="rise relative mx-auto hidden w-full max-w-sm xl:block"
+              style={{ animationDelay: "200ms" }}
+            >
+              <HomeScreen />
+              <div className="absolute -top-16 -right-14 hidden sm:block">
+                <Sticker count={apps.length} />
+              </div>
+            </div>
+          </header>
+        </div>
       </div>
 
-      <div className="mx-auto w-full max-w-5xl px-6 pt-20 pb-24 sm:pt-28">
-        {/* header */}
-        <header className="fade-up" style={{ animationDelay: "0ms" }}>
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-mono text-white/70 backdrop-blur">
-            <span className="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_2px_rgba(52,211,153,0.6)]" />
-            *.jennyspeelman.dev
-          </div>
-          <h1 className="mt-6 text-balance text-5xl font-semibold tracking-tight sm:text-6xl">
-            Jenny&apos;s apps,{" "}
-            <span className="bg-gradient-to-r from-fuchsia-400 via-pink-400 to-cyan-300 bg-clip-text text-transparent">
-              built with AI.
-            </span>
-          </h1>
-          <p className="mt-5 max-w-2xl text-pretty text-lg text-white/65 sm:text-xl">
-            A playground for the things I prompt into existence.
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3 text-sm">
-            <a
-              href="https://jennyplunkett.me"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 font-medium transition hover:bg-white/90"
-            >
-              Visit my portfolio
-              <span aria-hidden>→</span>
-            </a>
-            <a
-              href="https://github.com/yennster"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-medium text-white/80 backdrop-blur transition hover:bg-white/10"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/jennyplunkett/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-medium text-white/80 backdrop-blur transition hover:bg-white/10"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </header>
-
-        {/* featured */}
+      <div className="mx-auto w-full max-w-6xl px-6 sm:px-10">
         {featuredApps.length > 0 && (
-          <section className="mt-20">
-            <div className="flex items-end justify-between">
-              <h2 className="text-sm font-mono uppercase tracking-widest text-white/50">
-                Featured
-              </h2>
-              <span className="text-sm font-mono text-white/40">
-                Hand-picked
-              </span>
-            </div>
-
-            <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <section className="pt-24">
+            <h2 className="font-display text-4xl tracking-tight sm:text-5xl">
+              Featured
+            </h2>
+            <ul className="mt-10 grid gap-6 xl:grid-cols-3">
               {featuredApps.map((app, i) => (
-                <AppCard key={app.slug} app={app} index={i} />
+                <FeaturedApp key={app.slug} app={app} index={i} />
               ))}
             </ul>
           </section>
         )}
 
-        {/* apps grid */}
-        <section className="mt-16">
-          <div className="flex items-end justify-between">
-            <h2 className="text-sm font-mono uppercase tracking-widest text-white/50">
-              The apps
+        <section className="pt-28">
+          <div className="flex items-baseline justify-between gap-4 border-b border-line pb-6">
+            <h2 className="font-display text-4xl tracking-tight sm:text-5xl">
+              More apps
             </h2>
-            <span className="text-sm font-mono text-white/40">
-              {apps.length} {apps.length === 1 ? "project" : "projects"}
+            <span className="text-sm text-muted">
+              {apps.length} {apps.length === 1 ? "project" : "projects"} in
+              total
             </span>
           </div>
-
-          <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {otherApps.map((app, i) => (
-              <AppCard key={app.slug} app={app} index={i} />
+          <ul className="divide-y divide-line">
+            {otherApps.map((app) => (
+              <AppRow key={app.slug} app={app} />
             ))}
           </ul>
         </section>
 
-        {/* footer */}
-        <footer className="mt-24 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-8 text-sm text-white/40 sm:flex-row sm:items-center">
-          <p>
+        <footer className="mt-28 flex flex-col gap-6 border-t border-line py-12 sm:flex-row sm:items-end sm:justify-between">
+          <p className="font-display max-w-sm text-2xl leading-snug">
             Made by{" "}
             <a
               href="https://jennyplunkett.me"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/70 underline-offset-4 transition hover:text-white hover:underline"
+              className="italic text-rose underline decoration-rose/30 decoration-1 underline-offset-4 transition hover:decoration-rose"
             >
               Jenny Speelman
             </a>{" "}
-            with AI
+            with AI.
           </p>
-          <p className="font-mono text-xs">© {new Date().getFullYear()}</p>
+          <div className="flex items-center gap-6 text-sm text-muted">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-rose"
+              >
+                {link.label}
+              </a>
+            ))}
+            <span>© {new Date().getFullYear()}</span>
+          </div>
         </footer>
       </div>
     </main>

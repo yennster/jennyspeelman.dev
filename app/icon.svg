@@ -1,11 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#e879f9"/>
-      <stop offset="0.5" stop-color="#f472b6"/>
-      <stop offset="1" stop-color="#67e8f9"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e892b6"/>
+      <stop offset="1" stop-color="#c24f80"/>
     </linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="16" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.05"/>
+    </linearGradient>
+    <clipPath id="c"><rect width="32" height="32" rx="7.5"/></clipPath>
   </defs>
-  <rect width="32" height="32" rx="8" fill="#0a0a0f"/>
-  <path d="M19 8.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM18.25 12h-3v9.5c0 1.1-.9 2-2 2-.55 0-1.05-.22-1.4-.6l-2.1 2.1a5 5 0 0 0 8.5-3.5V12z" fill="url(#g)"/>
+  <g clip-path="url(#c)">
+    <rect width="32" height="32" fill="url(#bg)"/>
+    <g transform="translate(14.647 20.345) scale(0.01065 -0.01065)"><path d="M400 658 157 -207Q117 -350 42.0 -417.0Q-33 -484 -138 -484Q-203 -484 -235.5 -455.5Q-268 -427 -268 -386Q-268 -343 -244.0 -318.5Q-220 -294 -176 -294Q-151 -294 -131.0 -301.0Q-111 -308 -90.0 -315.5Q-69 -323 -45 -323Q-11 -323 11.5 -304.5Q34 -286 47 -247Q51 -227 49.5 -206.0Q48 -185 44.5 -160.5Q41 -136 39.5 -105.5Q38 -75 42.0 -36.0Q46 3 59 52L215 606Q232 671 231.5 701.5Q231 732 204 732Q186 732 166.5 720.5Q147 709 125 681Q114 668 104.0 665.0Q94 662 83 664Q68 667 64.0 689.0Q60 711 78 746Q100 785 133.5 816.5Q167 848 209.5 867.0Q252 886 300 886Q383 886 406.0 824.5Q429 763 400 658ZM385 1046Q337 1046 309.0 1076.0Q281 1106 280 1154Q280 1190 297.0 1223.5Q314 1257 345.5 1278.5Q377 1300 421 1300Q468 1300 494.5 1270.0Q521 1240 522 1192Q522 1156 505.5 1122.5Q489 1089 458.5 1067.5Q428 1046 385 1046Z" fill="#fff" stroke="#fff" stroke-width="70" stroke-linejoin="round"/></g>
+    <ellipse cx="16" cy="2" rx="22" ry="14" fill="url(#gloss)"/>
+  </g>
 </svg>
