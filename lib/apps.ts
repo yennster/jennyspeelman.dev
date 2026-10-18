@@ -52,18 +52,6 @@ export const apps: ClaudeApp[] = [
     accent: "from-[#b9a2ec] to-[#e58fc0]",
   },
   {
-    slug: "promptlog",
-    name: "Promptlog",
-    description:
-      "Local macOS app that audits the prompts you send to Claude, ChatGPT, Codex, and Antigravity desktop apps. Session-based, with a Next.js dashboard and PDF/XLSX export.",
-    url: "https://github.com/yennster/promptlog",
-    status: "live",
-    inDevelopment: true,
-    icon: "📊",
-    accent: "from-[#9fbfec] to-[#7a8fdc]",
-    displayHost: "github.com/yennster/promptlog",
-  },
-  {
     slug: "descript-automation",
     name: "Descript Automation",
     description:
