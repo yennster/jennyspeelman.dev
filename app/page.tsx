@@ -209,7 +209,7 @@ export default function Home() {
             </ul>
           </nav>
 
-          <header className="grid items-center gap-16 pt-14 pb-20 sm:pt-20 sm:pb-28 lg:grid-cols-[1.25fr_1fr]">
+          <header className="grid items-center gap-16 pt-14 pb-20 sm:pt-20 sm:pb-28 xl:grid-cols-[1.25fr_1fr]">
             <div>
               <h1 className="font-display rise text-[3.75rem] leading-[0.95] tracking-[-0.03em] sm:text-8xl xl:text-[7.25rem]">
                 Jenny&apos;s apps,
@@ -224,7 +224,7 @@ export default function Home() {
               </p>
             </div>
             <div
-              className="rise relative mx-auto w-full max-w-sm"
+              className="rise relative mx-auto hidden w-full max-w-sm xl:block"
               style={{ animationDelay: "200ms" }}
             >
               <HomeScreen />
