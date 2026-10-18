@@ -133,6 +133,18 @@ export const apps: ClaudeApp[] = [
     displayHost: "github.com/yennster/party-house",
   },
   {
+    slug: "mmo-compass",
+    name: "MMO Compass",
+    description:
+      "Live, play-style-first MMO discovery: recommendations reshuffle as you describe how you like to play. Browsable game catalog, detailed game pages, and community submissions.",
+    url: "https://www.mmocompass.com",
+    status: "live",
+    inDevelopment: true,
+    icon: "🧭",
+    accent: "from-[#f6c27f] to-[#e58fc0]",
+    displayHost: "mmocompass.com",
+  },
+  {
     slug: "music",
     name: "Apple Music → Spotify",
     description:
