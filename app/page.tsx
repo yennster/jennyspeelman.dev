@@ -135,24 +135,26 @@ function FeaturedApp({ app, index }: { app: ClaudeApp; index: number }) {
     <li className="rise" style={{ animationDelay: `${200 + index * 90}ms` }}>
       <Tag
         {...linkProps(app)}
-        className="group flex h-full flex-col rounded-[2rem] bg-paper p-7 ring-1 ring-line transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(68,25,47,0.4)] sm:p-8"
+        className="group flex h-full flex-col gap-7 rounded-[2rem] bg-paper p-7 ring-1 ring-line transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(68,25,47,0.4)] sm:flex-row sm:gap-8 sm:p-9 xl:flex-col xl:gap-7 xl:p-8"
       >
         <AppIcon
           app={app}
           className="size-20 text-4xl transition duration-300 group-hover:-rotate-3"
         />
-        <h3 className="font-display mt-7 text-3xl tracking-tight">
-          {app.name}
-        </h3>
-        <div className="mt-2">
-          <Meta app={app} />
+        <div className="flex flex-1 flex-col">
+          <h3 className="font-display text-3xl tracking-tight">{app.name}</h3>
+          <div className="mt-2">
+            <Meta app={app} />
+          </div>
+          <p className="mt-4 max-w-2xl leading-relaxed text-muted">
+            {app.description}
+          </p>
+          <p className="mt-auto pt-7 text-sm font-medium text-rose">
+            <span className="border-b border-rose/30 pb-0.5 transition group-hover:border-rose">
+              {hostFor(app)}
+            </span>
+          </p>
         </div>
-        <p className="mt-4 leading-relaxed text-muted">{app.description}</p>
-        <p className="mt-auto pt-7 text-sm font-medium text-rose">
-          <span className="border-b border-rose/30 pb-0.5 transition group-hover:border-rose">
-            {hostFor(app)}
-          </span>
-        </p>
       </Tag>
     </li>
   );
@@ -211,7 +213,7 @@ export default function Home() {
 
           <header className="grid items-center gap-16 pt-14 pb-20 sm:pt-20 sm:pb-28 xl:grid-cols-[1.25fr_1fr]">
             <div>
-              <h1 className="font-display rise text-[3.75rem] leading-[0.95] tracking-[-0.03em] sm:text-8xl xl:text-[7.25rem]">
+              <h1 className="font-display rise text-[3.75rem] leading-[0.95] tracking-[-0.03em] sm:text-8xl lg:text-[8.5rem] xl:text-[7.25rem]">
                 Jenny&apos;s apps,
                 <br />
                 <span className="wonk italic text-rose">built with AI.</span>
@@ -242,7 +244,7 @@ export default function Home() {
             <h2 className="font-display text-4xl tracking-tight sm:text-5xl">
               Featured
             </h2>
-            <ul className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-10 grid gap-6 xl:grid-cols-3">
               {featuredApps.map((app, i) => (
                 <FeaturedApp key={app.slug} app={app} index={i} />
               ))}
