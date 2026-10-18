@@ -32,13 +32,24 @@ export const apps: ClaudeApp[] = [
     slug: "fanficly",
     name: "Fanficly",
     description:
-      "Open-source, ad-free iPhone & iPad reader for AO3 fanfiction. Smart prompt-style search, offline library, native iOS.",
-    url: "https://apps.apple.com/us/app/fanficly-ao3-fanfiction/id6775897153",
+      "Open-source, ad-free AO3 fanfiction reader for iPhone, iPad, Mac & Windows. Live tag search, offline library, two-page spreads, and on-device read-aloud.",
+    url: "https://fanficly.app",
     status: "live",
     shipped: true,
     icon: "📖",
     accent: "from-[#f59ab2] to-[#e66f8f]",
-    displayHost: "apps.apple.com/app/fanficly",
+    displayHost: "fanficly.app",
+  },
+  {
+    slug: "canvas",
+    name: "Synthetic Data Studio: PlayCanvas",
+    description:
+      "Synthetic Data Studio rebuilt on PlayCanvas, with photoreal Gaussian splat scans as backdrops and props, auto-computed bounding boxes, and direct Edge Impulse upload.",
+    url: "https://canvas.jennyspeelman.dev",
+    status: "live",
+    inDevelopment: true,
+    icon: "🌌",
+    accent: "from-[#b9a2ec] to-[#e58fc0]",
   },
   {
     slug: "promptlog",
@@ -120,6 +131,29 @@ export const apps: ClaudeApp[] = [
     icon: "🪩",
     accent: "from-[#f7a8cf] via-[#c99ae6] to-[#8fcfe6]",
     displayHost: "github.com/yennster/party-house",
+  },
+  {
+    slug: "music",
+    name: "Apple Music → Spotify",
+    description:
+      "Paste an Apple Music song link, get the Spotify track back (and the other way around). Matches via Songlink, with search fallbacks and in-page playback.",
+    url: "https://music.jennyspeelman.dev",
+    status: "live",
+    inDevelopment: true,
+    icon: "🎧",
+    accent: "from-[#9ee0b8] to-[#f59ab2]",
+  },
+  {
+    slug: "vr-explorer",
+    name: "EI VR Explorer",
+    description:
+      "Quest 2 app for Edge Impulse: walk through your training data as a 3D point cloud, run live on-headset inference, and collect, retrain, and redeploy without taking the headset off.",
+    url: "https://github.com/yennster/ei-vr-explorer-unity",
+    status: "live",
+    inDevelopment: true,
+    icon: "🥽",
+    accent: "from-[#8fcfe6] to-[#a979d6]",
+    displayHost: "github.com/yennster/ei-vr-explorer-unity",
   },
 ];
 
